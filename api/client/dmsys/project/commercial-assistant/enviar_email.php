@@ -14,8 +14,8 @@ if (!isset($_POST['assunto']) || !isset($_POST['corpo_email'])) {
 }
 
 // Configurações do e-mail
-$para = 'bruno.alves@dmsys.com.br';
-$de = 'o.bruno.alves@unicondo.app';
+$para = '#';
+$de = '#';
 $assunto = $_POST['assunto'];
 $mensagem = $_POST['corpo_email'];
 
