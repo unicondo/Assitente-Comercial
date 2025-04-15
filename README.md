@@ -1,124 +1,234 @@
-# Assistente Comercial - Sistema de Solicitação de Propostas
+
+# 🚀 Assistente Comercial - Sistema de Solicitação de Propostas
 
 ## 📌 Visão Geral
 
-O **Assistente Comercial** é uma aplicação web desenvolvida para padronizar e otimizar o processo de solicitação de propostas comerciais entre equipes. O sistema foi criado com o objetivo principal de:
+O **Assistente Comercial** é uma aplicação web completa que **padroniza, organiza e automatiza** o processo de solicitação de propostas técnicas e comerciais. Desenvolvido para empresas que lidam com integrações de equipamentos, serviços e documentação técnica, o sistema centraliza todas as etapas da solicitação, garantindo **eficiência, clareza e segurança**.
 
-- **Alinhar as solicitações** entre diferentes setores da empresa  
-- **Evitar retrabalho** com informações incompletas ou inconsistentes  
-- **Centralizar** todas as solicitações em um único fluxo padronizado  
-- **Facilitar** a comunicação entre equipes comerciais e técnicas  
+---
 
 ## ✨ Funcionalidades Principais
 
-### 🔐 Sistema de Autenticação Segura
-- Login com senha protegida por hash bcrypt  
-- Limite de tentativas de login (35 tentativas) para prevenção de força bruta  
-- Sessão com timeout de 30 minutos por inatividade  
+### 🔐 Autenticação Segura
+- Login com hash `bcrypt`
+- Bloqueio automático após 35 tentativas incorretas (delay de 2 segundos)
+- Sessão com timeout de 30 minutos
 
-### 🖥️ Interface Intuitiva
-- Design moderno e responsivo (funciona em dispositivos móveis)  
-- Onboarding interativo para novos usuários  
-- Barra de progresso visual  
-- Validação de campos obrigatórios  
+### 💾 Salvamento Automático
+- Armazena dados localmente com `localStorage`
+- Evita perda de informações por fechamento/acidente
+- Dados são apagados automaticamente após envio
 
-### 🛠️ Gestão de Equipamentos
-- Cadastro completo de equipamentos com:  
-  - Nome, modelo e marca  
-  - Quantidade e especificações técnicas  
-  - Detalhes para cabos (metragem, tipo, vias, cor, blindagem)  
-- Possibilidade de adicionar múltiplos equipamentos  
+### 🧾 Protocolo Único por Solicitação
+- Cada proposta gera um código de protocolo exclusivo
+- Inserido no e-mail e na confirmação
+- Facilita rastreabilidade de solicitações
 
-### 👷 Gestão de Mão-de-Obra
-- Cadastro de serviços com:  
-  - Seleção de profissionais por categoria  
-  - Configuração de período (diurno/noturno)  
-  - Tipo de dia (útil/fim de semana)  
-  - Quantidade de dias necessários  
-- Adição de múltiplos profissionais por serviço  
-- Criação de vários serviços diferentes  
+### 🖥️ Interface Responsiva e Intuitiva
+- Layout moderno, escuro e adaptado para dispositivos móveis
+- Navegação por **etapas (tabs)**
+- Validação em tempo real dos campos obrigatórios
+- Barra de progresso no topo com animação
 
-### 📎 Anexos
-- Upload de relatório técnico com:  
-  - Validação de arquivo obrigatório  
-  - Feedback visual  
-  - Armazenamento seguro no servidor  
+### 📑 Formulário Completo
+- Seção de Informações Básicas:
+  - Setor (Contrato/Implantação), Cliente, Solicitante
+  - Prioridade com destaque visual
+  - Tipo de proposta (Produto, Serviço, Completa)
+  - Opção de notificação por e-mail
+  - Aditivo Contratual
 
-### ✉️ Fluxo de Envio
-- Pré-visualização completa da proposta antes do envio  
-- Geração automática de e-mail com todos os detalhes  
-- Confirmação visual do envio bem-sucedido  
+- Seção de Equipamentos:
+  - Adição de múltiplos itens com nome, modelo, marca, quantidade
+  - Detalhes técnicos: tipo e metragem de cabos, cor, vias, blindagem
 
-## 🛠️ Tecnologias Utilizadas
+- Seção de Mão de Obra:
+  - Vários serviços por proposta
+  - Tipo de profissional, período (diurno/noturno), tipo de dia, dias necessários
 
-### Front-end
-- HTML5, CSS3, JavaScript moderno (ES6+)  
-- Bootstrap 5 para componentes UI  
-- DotLottie para animações  
-- Design System próprio com variáveis CSS  
+- Upload de relatório técnico (obrigatório)
 
-### Back-end
-- PHP para processamento do servidor  
-- Sessões PHP para autenticação  
-- Upload seguro de arquivos  
-- Envio de e-mails com anexos  
+### 📤 Envio Inteligente
+- Geração de **resumo visual interativo**
+- Upload de arquivo com validação
+- Geração de e-mail com corpo estruturado + protocolo
+- Confirmação visual de envio
 
-## 🔧 Requisitos do Sistema
+### 🛡️ Proteção Contra Uso Indevido
+- Inputs sanitizados
+- Desativação de clique direito, F12 e inspeção de código
+- Proteção de sessão e diretório de uploads
 
-- Servidor web com PHP (versão 7.4 ou superior)  
-- Permissão de escrita no diretório `uploads/`  
-- Extensão PHP para hash bcrypt habilitada  
-- Configuração de memória PHP mínima de 256MB  
+---
 
-## 🚀 Como Implementar
+## 🆕 Novidades da Versão 2.0.0
 
-1. **Configuração inicial**:  
-   - Criar diretório `uploads/` com permissões de escrita  
-   - Verificar se o PHP está configurado com `memory_limit` de pelo menos 256M  
-   - Garantir que a extensão para hash bcrypt está habilitada  
+- Geração automática de protocolo
+- Salvamento automático com LocalStorage
+- Validação mais inteligente de campos
+- Interface com navegação por abas
+- Confirmação visual melhorada com resumo interativo
+- Melhor compatibilidade mobile
+- Proteção contra ferramentas de desenvolvedor
+- Design visual mais limpo e moderno
 
-2. **Segurança**:  
-   - Alterar a senha padrão (o hash atual é para "unicondo")  
-   - Configurar HTTPS para o servidor  
-   - Restringir acesso ao diretório `uploads/`  
+---
 
-3. **Personalização**:  
-   - Atualizar os tipos de profissionais conforme necessário  
-   - Ajustar o design através do arquivo CSS  
-   - Modificar os destinatários dos e-mails no script `enviar_email.php`  
+# 🔍 Análise do Código PHP/HTML/JavaScript
 
-## 📋 Fluxo de Trabalho Recomendado
+## 1. Configurações Iniciais (PHP)
 
-1. **Login**: Acesse o sistema com as credenciais autorizadas  
-2. **Preenchimento**:  
-   - Informe os dados básicos (setor, cliente, solicitante)  
-   - Adicione todos os equipamentos necessários  
-   - Especifique os serviços de mão-de-obra  
-   - Anexe o relatório técnico completo  
-3. **Revisão**: Confira todas as informações no resumo antes do envio  
-4. **Envio**: Finalize o processo e aguarde a confirmação  
+```php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+ini_set('memory_limit', '256M');
+session_start();
+```
 
-## 🛡️ Considerações de Segurança
+- Ativa exibição de erros
+- Define limite de memória
+- Inicia sessão para controle de autenticação
 
-- **Proteção contra injeção**: Todos os inputs são sanitizados antes do processamento  
-- **Proteção de sessão**: Timeout automático após 30 minutos  
-- **Bloqueio de tentativas**: Sistema bloqueia após 35 tentativas falhas  
-- **Proteção do cliente**: Desabilitado menu de contexto e ferramentas de desenvolvedor  
+---
 
-## 📈 Benefícios Esperados
+## 2. Autenticação por Senha
 
-- **Redução de retrabalho**: Informações completas desde o primeiro envio  
-- **Padronização**: Todos seguem o mesmo formato para solicitações  
-- **Transparência**: Histórico claro de todas as solicitações  
-- **Eficiência**: Processo mais rápido para todas as equipes envolvidas  
+```php
+$senha_correta = '$2y$10$fCacVbnAk6m7zsQJ0dKPt.xlgYAba5g8ZsBVOi4uJvLIT0Vgi.0TW';
+```
 
-## 📞 Suporte e Contato
+- Verifica senha contra hash ("unicondo")
+- Bloqueia login após 35 tentativas (delay de 2s)
 
-Para dúvidas, suporte ou sugestões, entre em contato:
+---
+
+## 3. Página de Login
+
+- Animação Lottie com saudação dinâmica (bom dia/tarde/noite)
+- Campo de senha com botão mostrar/ocultar
+- Proteção contra inspeção e cópia (F12, clique direito bloqueados)
+
+---
+
+## 4. Controle de Sessão
+
+- Sessão expira após 30 minutos
+- Redireciona automaticamente ao login
+
+---
+
+## 5. Página Principal (Após Login)
+
+### Layout
+- Barra de progresso no scroll
+- Spinner de carregamento
+- Modal de confirmação de envio
+- Modal de tutorial onboarding (DotLottie)
+
+### Seções do Formulário
+
+#### Informações Básicas
+- Campos obrigatórios: Setor, Cliente, Solicitante
+- Prioridade visual (com cores: verde, amarelo, vermelho, roxo)
+- Tipo de proposta e opções extras (email/aditivo)
+
+#### Equipamentos
+- Blocos dinâmicos com botão adicionar/remover
+- Campos para cabos (ativados conforme tipo selecionado)
+
+#### Mão de Obra
+- Blocos de serviço com múltiplos profissionais
+- Campos dinâmicos: tipo, período, dias
+- Adição e remoção em tempo real
+
+#### Upload
+- Arquivo obrigatório (PDF, DOCX)
+- Upload com feedback visual
+
+---
+
+## 6. Funcionalidades JavaScript
+
+### 🔁 Fluxo Lógico
+- `atualizarVisibilidadeSecoes()` – mostra/oculta seções por tipo de proposta
+- `gerarProtocolo()` – cria código único com base na data/hora
+- `gerarResumoProposta()` – compila os dados em HTML para envio
+- `enviarSolicitacao()` e `enviarEmail()` – processam envio final
+- `enviarArquivoParaServidor()` – upload via AJAX para PHP
+
+### 🧩 Interatividade
+- `adicionarEquipamento()` / `removerEquipamento()` – gestão de equipamentos
+- `adicionarServico()` / `removerServico()` – gestão de serviços
+- `adicionarProfissional()` / `removerProfissional()` – por serviço
+
+### 📦 UI/UX
+- Validação de campos obrigatórios
+- Modais interativos (tutorial, confirmação)
+- Scroll progressivo com barra visual
+- Efeitos visuais em prioridades e botões
+
+---
+
+## 7. Estilo CSS
+
+- Tema escuro elegante
+- Destaques por prioridade (verde, amarelo, vermelho, roxo)
+- Responsivo para mobile e desktop
+- Modais e tabelas estilizadas
+- Feedback visual para botões e hover
+
+---
+
+## 8. Backend (Implícito)
+
+- `upload.php`: recebe relatório técnico
+- `enviar_email.php`: gera e envia e-mail com dados da proposta + anexo
+
+---
+
+## 🚦 Fluxo Completo
+
+1. Usuário acessa e faz login
+2. Preenche dados básicos
+3. Adiciona equipamentos e serviços
+4. Anexa relatório técnico
+5. Visualiza resumo e confirma envio
+6. Sistema gera protocolo e envia e-mail
+7. Dados são apagados do LocalStorage
+
+---
+
+## 🧰 Tecnologias Utilizadas
+
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+), Bootstrap 5, DotLottie
+- **Backend**: PHP 7.4+, Sessões, Uploads, `bcrypt`, envio de e-mail
+
+---
+
+## 🧾 Requisitos
+
+- Servidor com PHP 7.4+
+- Extensões: `openssl`, `fileinfo`, `bcrypt`, `mbstring`
+- Pasta `uploads/` com permissão de escrita
+- HTTPS recomendado
+
+---
+
+## 📈 Benefícios
+
+- Processo padronizado e centralizado
+- Economia de tempo e retrabalho
+- Controle por protocolo
+- Melhor comunicação entre áreas técnicas e comerciais
+- Interface clara e segura
+
+---
+
+## 📞 Suporte
 
 **Allvz Startup**  
 📱 WhatsApp: [+55 11 98793-5241](https://wa.me/5511987935241)
 
 ---
 
-**Nota**: Este sistema foi desenvolvido para otimizar a comunicação entre equipes e garantir que todas as solicitações comerciais cheguem completas e padronizadas ao setor responsável.
+> *Solução robusta para empresas que valorizam agilidade, clareza e segurança nas solicitações comerciais.*
