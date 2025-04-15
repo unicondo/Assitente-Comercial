@@ -39,19 +39,48 @@ if (!isset($_SESSION['logado'])) {
             <title>Assistente Comercial</title>
             <link rel="stylesheet" href="https://unicondo.app/api/client/dmsys/project/commercial-assistant/assets/css/root.css">
             <link rel="stylesheet" href="https://unicondo.app/api/client/dmsys/project/commercial-assistant/assets/css/style.css">
+            <!-- Favicon -->
+            <link rel="icon" type="image/png" href="https://res.cloudinary.com/djldhndm4/image/upload/v1744049851/a_c-favicon_ojozlk.png" />
+
+            <!-- Thumbnail para compartilhamento -->
+            <meta property="og:image" content="https://res.cloudinary.com/djldhndm4/image/upload/v1744049790/thumb-ac-allvz_lt8vhh.jpg" />
+            <meta property="og:image:type" content="image/jpeg" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="630" />
+
+            <!-- Open Graph Tags -->
+            <meta property="og:title" content="Assistente Comercial - Solicitação de Propostas Padronizada" />
+            <meta property="og:description" content="Sistema interno da DMSYS para padronizar, agilizar e organizar o envio de propostas comerciais. Reduza retrabalho, ganhe tempo e garanta clareza nas solicitações entre equipes." />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://dmsys.com.br" />
+            <meta property="og:site_name" content="Assistente Comercial | DMSYS" />
+            <meta property="og:locale" content="pt_BR" />
+
+            <!-- Twitter Card -->
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content="Assistente Comercial - Solicitação de Propostas Padronizada" />
+            <meta name="twitter:description" content="Sistema interno da DMSYS para padronizar, agilizar e organizar o envio de propostas comerciais. Reduza retrabalho, ganhe tempo e garanta clareza nas solicitações entre equipes." />
+            <meta name="twitter:image" content="https://res.cloudinary.com/djldhndm4/image/upload/v1744049790/thumb-ac-allvz_lt8vhh.jpg" />
+
+            <!-- Autor, Designer e Direitos -->
+            <meta name="author" content="Allvz Startup" />
+            <meta name="designer" content="Bruno Ferreira Alves" />
+            <meta name="developer" content="Bruno Ferreira Alves" />
+            <meta name="copyright" content="© 2025 ALLVZ Startup - UniCondo e Bruno Ferreira Alves. Todos os direitos reservados." />
+       
         </head>
         <body>
             <div class="login-container">
                 <div class="logo"><center><dotlottie-player
-  src="https://lottie.host/9b4a348e-8139-420d-83dd-9c92a17193f5/RpeYIo8A8E.lottie"
-  background="transparent"
-  speed="1"
-  style="width: 150px; height: 150px"
-  loop
-  autoplay
-></dotlottie-player></center></div>
+                    src="https://lottie.host/9b4a348e-8139-420d-83dd-9c92a17193f5/RpeYIo8A8E.lottie"
+                    background="transparent"
+                    speed="1"
+                    style="width: 150px; height: 150px"
+                    loop
+                    autoplay
+                ></dotlottie-player></center></div>
                 <h3 class="text-center mb-4"><div id="saudacao" class="saudacao"></div>
-        <p>Estou aqui para te ajudar com vendas, orçamentos e suporte comercial! 💼</p></h3>
+                <p>Estou aqui para te ajudar com vendas, orçamentos e suporte comercial! 💼</p></h3>
                 
                 <?php if (isset($erro_login)): ?>
                     <div class="alert"><?php echo htmlspecialchars($erro_login, ENT_QUOTES, 'UTF-8'); ?></div>
@@ -66,21 +95,21 @@ if (!isset($_SESSION['logado'])) {
                     <button type="submit" class="btn btn-primary">Acessar</button>
                 </form>
             </div>
-             <script>
-        const horaAtual = new Date().getHours();
-        const elemento = document.getElementById('saudacao');
-        let periodo;
-        
-        if (horaAtual >= 5 && horaAtual < 12) {
-            periodo = "Bom dia";
-        } else if (horaAtual >= 12 && horaAtual < 18) {
-            periodo = "Boa tarde";
-        } else {
-            periodo = "Boa noite";
-        }
-        
-        elemento.innerHTML = `${periodo}! Eu sou seu novo Assistente Comercial <span class="emoji">👋</span>`;
-    </script>
+            <script>
+                const horaAtual = new Date().getHours();
+                const elemento = document.getElementById('saudacao');
+                let periodo;
+                
+                if (horaAtual >= 5 && horaAtual < 12) {
+                    periodo = "Bom dia";
+                } else if (horaAtual >= 12 && horaAtual < 18) {
+                    periodo = "Boa tarde";
+                } else {
+                    periodo = "Boa noite";
+                }
+                
+                elemento.innerHTML = `${periodo}! Eu sou seu novo Assistente Comercial <span class="emoji">👋</span>`;
+            </script>
             <script>
                 function togglePassword() {
                     const passwordField = document.getElementById('senha');
@@ -104,10 +133,7 @@ if (!isset($_SESSION['logado'])) {
                     }
                 });
             </script>
-            <script
-  src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs"
-  type="module"
-></script>
+            <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
         </body>
         </html>
         <?php
@@ -311,6 +337,42 @@ if (!file_exists($upload_dir)) {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        .priority-normal {
+            color: #3498db;
+            font-weight: bold;
+        }
+        .priority-medium {
+            color: #2ecc71;
+            font-weight: bold;
+        }
+        .priority-high {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        .priority-urgent {
+            color: #ff0000;
+            font-weight: bold;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        .protocolo-email-container {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .protocolo-email-container > div {
+            flex: 1;
+        }
+        @media (max-width: 768px) {
+            .protocolo-email-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -342,9 +404,61 @@ if (!file_exists($upload_dir)) {
 
         <div class="card mb-3">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-8">
                     <label class="form-label" data-bs-toggle="tooltip" title="Informe o nome do solicitante">Nome do Solicitante (Obrigatório):</label>
                     <input type="text" id="solicitante" class="form-control w-100" placeholder="Nome do Solicitante" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label" data-bs-toggle="tooltip" title="Selecione a prioridade da solicitação">Prioridade:</label>
+                    <select id="prioridade" class="form-select">
+                        <option value="Normal" class="priority-normal">Normal</option>
+                        <option value="Média" class="priority-medium">Média</option>
+                        <option value="Alta" class="priority-high">Alta</option>
+                        <option value="Urgente" class="priority-urgent">Urgente</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="notificar-email">
+                        <label class="form-check-label" for="notificar-email">
+                            Quero ser notificado por e-mail sobre atualizações desta solicitação
+                        </label>
+                    </div>
+                    <div class="form-check mt-2">
+                        <input class="form-check-input" type="checkbox" id="aditivo-contratual">
+                        <label class="form-check-label" for="aditivo-contratual">
+                            Aditivo Contratual
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <label class="form-label">Tipo de Proposta:</label>
+                    <select id="tipo-proposta" class="form-select">
+                        <option value="Somente Produto">Somente Produto</option>
+                        <option value="Somente Serviço">Somente Serviço</option>
+                        <option value="Completa">Completa</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="row mt-3" id="email-protocolo-container" style="display: none;">
+                <div class="col-md-12">
+                    <div class="protocolo-email-container">
+                        <div>
+                            <label class="form-label">E-mail para notificação:</label>
+                            <input type="email" id="email-notificacao" class="form-control" placeholder="Seu e-mail">
+                        </div>
+                        <div>
+                            <label class="form-label">Protocolo:</label>
+                            <input type="text" id="protocolo" class="form-control" readonly>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -374,27 +488,36 @@ if (!file_exists($upload_dir)) {
                         <textarea class="form-control especificacoes" placeholder="Especificações Técnicas" required></textarea>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label" data-bs-toggle="tooltip" title="Se for cabo, informe a metragem">Metragem do Cabo (se aplicável):</label>
-                        <input type="number" class="form-control metragem" placeholder="Metros">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" data-bs-toggle="tooltip" title="Tipo de cabo">Tipo de Cabo:</label>
-                        <input type="text" class="form-control tipo-cabo" placeholder="Tipo de Cabo">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" data-bs-toggle="tooltip" title="Número de vias">Número de Vias:</label>
-                        <input type="number" class="form-control numero-vias" placeholder="Número de Vias">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" data-bs-toggle="tooltip" title="Cor do cabo">Cor:</label>
-                        <input type="text" class="form-control cor" placeholder="Cor">
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label" data-bs-toggle="tooltip" title="Blindado?">Blindado?</label>
-                        <select class="form-select blindado">
-                            <option value="Sim">Sim</option>
+                        <label class="form-label" data-bs-toggle="tooltip" title="Será necessário cabo?">Será necessário cabo?</label>
+                        <select class="form-select necessita-cabo">
                             <option value="Não">Não</option>
+                            <option value="Sim">Sim</option>
                         </select>
+                    </div>
+                    <div class="campos-cabo" style="display: none;">
+                        <div class="col-md-6">
+                            <label class="form-label" data-bs-toggle="tooltip" title="Se for cabo, informe a metragem">Metragem do Cabo:</label>
+                            <input type="number" class="form-control metragem" placeholder="Metros">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" data-bs-toggle="tooltip" title="Tipo de cabo">Tipo de Cabo:</label>
+                            <input type="text" class="form-control tipo-cabo" placeholder="Tipo de Cabo">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" data-bs-toggle="tooltip" title="Número de vias">Número de Vias:</label>
+                            <input type="number" class="form-control numero-vias" placeholder="Número de Vias">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" data-bs-toggle="tooltip" title="Cor do cabo">Cor:</label>
+                            <input type="text" class="form-control cor" placeholder="Cor">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" data-bs-toggle="tooltip" title="Blindado?">Blindado?</label>
+                            <select class="form-select blindado">
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="col-md-6 d-flex align-items-end">
                         <button class="btn btn-info w-100" onclick="removerEquipamento(this)">Remover</button>
@@ -479,7 +602,7 @@ if (!file_exists($upload_dir)) {
                     <div class="row mt-3">
                         <div class="col-md-12">
                             <label class="form-label">Descrição do Serviço:</label>
-                            <input type="text" class="form-control servico" placeholder="Descrição do Serviço">
+                            <input type="text" class="form-control servico" placeholder="Descrição do Serviço" required>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -537,6 +660,48 @@ if (!file_exists($upload_dir)) {
         let relatorioLink = '';
         let relatorioNome = '';
         
+        // Mostrar/ocultar seções com base no tipo de proposta
+        function atualizarVisibilidadeSecoes() {
+            const tipoProposta = document.getElementById('tipo-proposta').value;
+            
+            // Mostrar/ocultar seção de equipamentos
+            if (tipoProposta === 'Somente Serviço') {
+                document.getElementById('equipamentos').style.display = 'none';
+            } else {
+                document.getElementById('equipamentos').style.display = 'block';
+            }
+            
+            // Mostrar/ocultar seção de mão-de-obra
+            if (tipoProposta === 'Somente Produto') {
+                document.getElementById('mao-de-obra').style.display = 'none';
+            } else {
+                document.getElementById('mao-de-obra').style.display = 'block';
+            }
+        }
+        
+        // Mostrar/ocultar campos de cabo
+        document.addEventListener('change', function(e) {
+            if (e.target.classList.contains('necessita-cabo')) {
+                const camposCabo = e.target.closest('.equipamento').querySelector('.campos-cabo');
+                camposCabo.style.display = e.target.value === 'Sim' ? 'block' : 'none';
+            }
+        });
+
+        // Mostrar/ocultar campo de e-mail e protocolo
+        document.getElementById('notificar-email').addEventListener('change', function() {
+            const container = document.getElementById('email-protocolo-container');
+            container.style.display = this.checked ? 'block' : 'none';
+            if (this.checked) {
+                gerarProtocolo();
+            }
+        });
+
+        // Atualizar visibilidade ao carregar a página e ao mudar o tipo de proposta
+        document.addEventListener('DOMContentLoaded', function() {
+            atualizarVisibilidadeSecoes();
+            document.getElementById('tipo-proposta').addEventListener('change', atualizarVisibilidadeSecoes);
+        });
+
         // Funções para equipamentos
         function adicionarEquipamento() {
             let equipamentoContainer = document.querySelector(".equipamento-container");
@@ -622,66 +787,204 @@ if (!file_exists($upload_dir)) {
             document.getElementById("spinner").style.display = "none";
         }
 
+        // Gerar protocolo único
+        function gerarProtocolo() {
+            const now = new Date();
+            const dia = String(now.getDate()).padStart(2, '0');
+            const mes = String(now.getMonth() + 1).padStart(2, '0');
+            const ano = now.getFullYear();
+            const horas = String(now.getHours()).padStart(2, '0');
+            const minutos = String(now.getMinutes()).padStart(2, '0');
+            const segundos = String(now.getSeconds()).padStart(2, '0');
+            
+            // Gerar 3 letras aleatórias
+            const letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let randomLetras = '';
+            for (let i = 0; i < 3; i++) {
+                randomLetras += letras.charAt(Math.floor(Math.random() * letras.length));
+            }
+            
+            const protocolo = `DMSYS${dia}${mes}${ano}-${horas}${minutos}${segundos}-${randomLetras}`;
+            document.getElementById('protocolo').value = protocolo;
+            return protocolo;
+        }
+
         // Função para gerar o resumo da proposta
         function gerarResumoProposta() {
             // Coletar dados básicos
             const setor = document.getElementById("setor").value;
             const cliente = document.getElementById("cliente").value;
             const solicitante = document.getElementById("solicitante").value;
+            const prioridade = document.getElementById("prioridade").value;
+            const tipoProposta = document.getElementById("tipo-proposta").value;
+            const notificarEmail = document.getElementById("notificar-email").checked;
+            const emailNotificacao = document.getElementById("email-notificacao").value;
+            const aditivoContratual = document.getElementById("aditivo-contratual").checked;
             const relatorio = document.getElementById("relatorio").files[0];
+            const protocolo = document.getElementById("protocolo").value || (notificarEmail ? gerarProtocolo() : '');
             
-            // Gerar tabela de equipamentos
-            let tabelaEquipamentos = "<h4>Equipamentos</h4><table class='tabela-resumo'><tr><th>Nome</th><th>Modelo</th><th>Marca</th><th>Quantidade</th><th>Especificações</th></tr>";
+            // Criar estilo CSS para o email (para manter formatação similar)
+            const estiloEmail = `
+                <style>
+                    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+                    h3 { color: #2c3e50; border-bottom: 2px solid #3498db; padding-bottom: 5px; }
+                    h4 { color: #2c3e50; margin-top: 20px; }
+                    .tabela-resumo {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin: 15px 0;
+                        font-size: 14px;
+                    }
+                    .tabela-resumo th, .tabela-resumo td {
+                        border: 1px solid #ddd;
+                        padding: 8px;
+                        text-align: left;
+                    }
+                    .tabela-resumo th {
+                        background-color: #f2f2f2;
+                        color: #2c3e50;
+                    }
+                    .tabela-resumo tr:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+                    .priority-normal { color: #3498db; font-weight: bold; }
+                    .priority-medium { color: #2ecc71; font-weight: bold; }
+                    .priority-high { color: #e67e22; font-weight: bold; }
+                    .priority-urgent { color: #e74c3c; font-weight: bold; }
+                </style>
+            `;
             
-            document.querySelectorAll(".equipamento").forEach(equip => {
-                tabelaEquipamentos += `<tr>
-                    <td>${equip.querySelector(".nome-equipamento").value || '-'}</td>
-                    <td>${equip.querySelector(".modelo").value || '-'}</td>
-                    <td>${equip.querySelector(".marca").value || '-'}</td>
-                    <td>${equip.querySelector(".quantidade").value || '-'}</td>
-                    <td>${equip.querySelector(".especificacoes").value || '-'}</td>
-                </tr>`;
-            });
-            tabelaEquipamentos += "</table>";
-
-            // Gerar tabela de serviços
-            let tabelaServicos = "<h4>Serviços</h4><table class='tabela-resumo'><tr><th>Profissionais</th><th>Tipo</th><th>Período</th><th>Dia</th><th>Total Dias</th><th>Descrição</th></tr>";
-            
-            document.querySelectorAll(".servico-container").forEach(servico => {
-                const periodo = servico.querySelector(".periodo-servico").value;
-                const dia = servico.querySelector(".dia-servico").value;
-                const totalDias = servico.querySelector(".total-dias").value;
-                const descricao = servico.querySelector(".servico").value;
-                
-                // Adicionar cada profissional do serviço
-                servico.querySelectorAll(".profissional-container").forEach(prof => {
-                    const qtd = prof.querySelector(".quantidade-profissionais").value;
-                    const tipo = prof.querySelector(".tipo-profissional").value;
-                    
-                    tabelaServicos += `<tr>
-                        <td>${qtd}</td>
-                        <td>${tipo}</td>
-                        <td>${periodo}</td>
-                        <td>${dia}</td>
-                        <td>${totalDias}</td>
-                        <td>${descricao}</td>
-                    </tr>`;
-                });
-            });
-            tabelaServicos += "</table>";
-
-            // Criar o conteúdo do resumo
-            const resumo = `
+            // Cabeçalho do resumo
+            let resumo = `
+                ${estiloEmail}
+                <h3>Resumo da Proposta Comercial</h3>
+                <p><strong>Protocolo:</strong> ${protocolo || 'Não gerado'}</p>
+                <p><strong>Prioridade:</strong> <span class="${prioridade === 'Normal' ? 'priority-normal' : prioridade === 'Média' ? 'priority-medium' : prioridade === 'Alta' ? 'priority-high' : 'priority-urgent'}">${prioridade}</span></p>
+                <p><strong>Tipo de Proposta:</strong> ${tipoProposta}</p>
+                ${aditivoContratual ? '<p><strong>Aditivo Contratual:</strong> Sim</p>' : ''}
                 <p><strong>Setor:</strong> ${setor}</p>
                 <p><strong>Cliente:</strong> ${cliente}</p>
                 <p><strong>Solicitante:</strong> ${solicitante}</p>
-                ${tabelaEquipamentos}
-                ${tabelaServicos}
-                <p><strong>Relatório Técnico:</strong> ${relatorio ? relatorio.name : 'Não anexado'}</p>
+                ${notificarEmail ? `<p><strong>E-mail para notificação:</strong> ${emailNotificacao || 'Não informado'}</p>` : ''}
+            `;
+
+            // Seção de Equipamentos (se aplicável)
+            if (tipoProposta !== 'Somente Serviço') {
+                resumo += `<h4>Equipamentos</h4>`;
+                
+                if (document.querySelectorAll(".equipamento").length > 0) {
+                    resumo += `
+                        <table class="tabela-resumo">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Modelo</th>
+                                    <th>Marca</th>
+                                    <th>Quantidade</th>
+                                    <th>Especificações</th>
+                                    <th>Necessita Cabo?</th>
+                                    ${document.querySelector(".necessita-cabo").value === 'Sim' ? '<th>Detalhes do Cabo</th>' : ''}
+                                </tr>
+                            </thead>
+                            <tbody>
+                    `;
+                    
+                    document.querySelectorAll(".equipamento").forEach(equip => {
+                        const necessitaCabo = equip.querySelector(".necessita-cabo").value;
+                        const detalhesCabo = necessitaCabo === 'Sim' ? 
+                            `<td>
+                                Metragem: ${equip.querySelector(".metragem").value || '-'}m<br>
+                                Tipo: ${equip.querySelector(".tipo-cabo").value || '-'}<br>
+                                Vias: ${equip.querySelector(".numero-vias").value || '-'}<br>
+                                Cor: ${equip.querySelector(".cor").value || '-'}<br>
+                                Blindado: ${equip.querySelector(".blindado").value || '-'}
+                            </td>` : '<td>-</td>';
+                        
+                        resumo += `
+                            <tr>
+                                <td>${equip.querySelector(".nome-equipamento").value || '-'}</td>
+                                <td>${equip.querySelector(".modelo").value || '-'}</td>
+                                <td>${equip.querySelector(".marca").value || '-'}</td>
+                                <td>${equip.querySelector(".quantidade").value || '-'}</td>
+                                <td>${equip.querySelector(".especificacoes").value || '-'}</td>
+                                <td>${necessitaCabo}</td>
+                                ${detalhesCabo}
+                            </tr>
+                        `;
+                    });
+                    
+                    resumo += `</tbody></table>`;
+                } else {
+                    resumo += `<p>Nenhum equipamento cadastrado.</p>`;
+                }
+            }
+
+            // Seção de Serviços (se aplicável)
+            if (tipoProposta !== 'Somente Produto') {
+                resumo += `<h4>Serviços</h4>`;
+                
+                if (document.querySelectorAll(".servico-container").length > 0) {
+                    resumo += `
+                        <table class="tabela-resumo">
+                            <thead>
+                                <tr>
+                                    <th>Descrição</th>
+                                    <th>Profissionais</th>
+                                    <th>Período</th>
+                                    <th>Dia</th>
+                                    <th>Total Dias</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    `;
+                    
+                    document.querySelectorAll(".servico-container").forEach(servico => {
+                        const descricao = servico.querySelector(".servico").value || '-';
+                        const periodo = servico.querySelector(".periodo-servico").value || '-';
+                        const dia = servico.querySelector(".dia-servico").value || '-';
+                        const totalDias = servico.querySelector(".total-dias").value || '-';
+                        
+                        // Listar todos os profissionais do serviço
+                        let profissionais = '';
+                        servico.querySelectorAll(".profissional-container").forEach(prof => {
+                            const qtd = prof.querySelector(".quantidade-profissionais").value || '-';
+                            const tipo = prof.querySelector(".tipo-profissional").value || '-';
+                            profissionais += `${qtd} ${tipo}<br>`;
+                        });
+                        
+                        resumo += `
+                            <tr>
+                                <td>${descricao}</td>
+                                <td>${profissionais || '-'}</td>
+                                <td>${periodo}</td>
+                                <td>${dia}</td>
+                                <td>${totalDias}</td>
+                            </tr>
+                        `;
+                    });
+                    
+                    resumo += `</tbody></table>`;
+                } else {
+                    resumo += `<p>Nenhum serviço cadastrado.</p>`;
+                }
+            }
+
+            // Informações do relatório técnico
+            resumo += `<h4>Documentação</h4>`;
+            resumo += `<p><strong>Relatório Técnico:</strong> ${relatorio ? relatorio.name : 'Não anexado'}</p>`;
+            
+            // Rodapé
+            resumo += `
+                <p style="margin-top: 30px; font-size: 12px; color: #7f8c8d;">
+                    Esta é uma mensagem automática. Por favor, não responda este e-mail.
+                </p>
             `;
 
             // Inserir o resumo no modal
             document.getElementById("resumoProposta").innerHTML = resumo;
+            
+            // Retornar também o HTML formatado para o email
+            return resumo;
         }
 
         // Função para enviar o arquivo para o servidor
@@ -724,9 +1027,51 @@ if (!file_exists($upload_dir)) {
             const cliente = document.getElementById("cliente").value;
             const solicitante = document.getElementById("solicitante").value;
             const relatorio = document.getElementById("relatorio").files[0];
+            const tipoProposta = document.getElementById("tipo-proposta").value;
             
             if (!cliente || !solicitante || !relatorio) {
                 alert("Por favor, preencha todos os campos obrigatórios!");
+                return;
+            }
+
+            // Validar equipamentos se for proposta de produto ou completa
+            if (tipoProposta !== 'Somente Serviço') {
+                let equipamentosValidos = true;
+                document.querySelectorAll(".equipamento").forEach(equip => {
+                    if (!equip.querySelector(".nome-equipamento").value || 
+                        !equip.querySelector(".quantidade").value || 
+                        !equip.querySelector(".especificacoes").value) {
+                        equipamentosValidos = false;
+                    }
+                });
+                
+                if (!equipamentosValidos) {
+                    alert("Por favor, preencha todos os campos obrigatórios dos equipamentos!");
+                    return;
+                }
+            }
+
+            // Validar serviços se for proposta de serviço ou completa
+            if (tipoProposta !== 'Somente Produto') {
+                let servicosValidos = true;
+                document.querySelectorAll(".servico").forEach(servico => {
+                    if (!servico.value) {
+                        servicosValidos = false;
+                    }
+                });
+                
+                if (!servicosValidos) {
+                    alert("Por favor, preencha a descrição do serviço para todos os serviços!");
+                    return;
+                }
+            }
+
+            // Validar e-mail se necessário
+            const notificarEmail = document.getElementById("notificar-email").checked;
+            const emailNotificacao = document.getElementById("email-notificacao").value;
+            
+            if (notificarEmail && !emailNotificacao) {
+                alert("Por favor, informe um e-mail válido para receber notificações");
                 return;
             }
 
@@ -750,17 +1095,34 @@ if (!file_exists($upload_dir)) {
             const setor = document.getElementById("setor").value;
             const cliente = document.getElementById("cliente").value;
             const solicitante = document.getElementById("solicitante").value;
+            const prioridade = document.getElementById("prioridade").value;
+            const tipoProposta = document.getElementById("tipo-proposta").value;
+            const aditivoContratual = document.getElementById("aditivo-contratual").checked;
+            const notificarEmail = document.getElementById("notificar-email").checked;
+            const emailNotificacao = document.getElementById("email-notificacao").value;
+            const protocolo = document.getElementById("protocolo").value || (notificarEmail ? gerarProtocolo() : '');
             
             // Criar o assunto do email
-            const assunto = `Proposta Comercial do ${setor} para ${cliente} - ${solicitante}`;
+            const assunto = `[${prioridade}] ${aditivoContratual ? 'Aditivo Contratual' : 'Proposta Comercial'} ${protocolo} - ${tipoProposta} para ${cliente}`;
             
-            // Pegar o conteúdo do resumo
-            const corpoEmail = document.getElementById("resumoProposta").innerHTML;
+            // Pegar o conteúdo do resumo (já formatado para email)
+            const corpoEmail = gerarResumoProposta();
             
             // Dados para enviar ao servidor
             const formData = new FormData();
             formData.append('assunto', assunto);
             formData.append('corpo_email', corpoEmail);
+            formData.append('protocolo', protocolo);
+            formData.append('prioridade', prioridade);
+            formData.append('tipo_proposta', tipoProposta);
+            formData.append('aditivo_contratual', aditivoContratual ? 'Sim' : 'Não');
+            formData.append('cliente', cliente);
+            formData.append('solicitante', solicitante);
+            
+            if (notificarEmail && emailNotificacao) {
+                formData.append('email_notificacao', emailNotificacao);
+            }
+            
             if (relatorioLink) {
                 formData.append('caminho_relatorio', relatorioLink);
                 formData.append('nome_arquivo', relatorioNome);
@@ -778,9 +1140,10 @@ if (!file_exists($upload_dir)) {
                 const data = await response.json();
                 
                 if (data.success) {
-                    alert('Proposta enviada com sucesso!');
+                    alert(`${aditivoContratual ? 'Aditivo Contratual' : 'Proposta'} ${protocolo} enviada com sucesso!${notificarEmail ? ' Você receberá atualizações por e-mail.' : ''}`);
                     fecharModal();
                     // Limpar formulário ou redirecionar se necessário
+                    window.location.reload();
                 } else {
                     alert('Erro ao enviar proposta: ' + data.message);
                 }
@@ -809,11 +1172,27 @@ if (!file_exists($upload_dir)) {
                 },
                 { 
                     title: "Informações Básicas", 
-                    text: "Comece preenchendo as informações básicas: Setor, Cliente e Nome do Solicitante. Estes campos são essenciais para identificar a solicitação." 
+                    text: "Comece preenchendo as informações básicas: Setor, Cliente, Nome do Solicitante e Prioridade. Estes campos são essenciais para identificar a solicitação." 
+                },
+                { 
+                    title: "Tipo de Proposta", 
+                    text: "Selecione o tipo de proposta: Somente Produto, Somente Serviço ou Completa. Isso determinará quais seções do formulário serão exibidas." 
+                },
+                { 
+                    title: "Notificação por E-mail", 
+                    text: "Marque a opção 'Quero ser notificado por e-mail' se desejar receber atualizações sobre esta solicitação. Um protocolo único será gerado automaticamente." 
+                },
+                { 
+                    title: "Aditivo Contratual", 
+                    text: "Marque a opção 'Aditivo Contratual' se esta solicitação for para um aditivo de contrato existente." 
                 },
                 { 
                     title: "Equipamentos", 
-                    text: "Na seção de Equipamentos, adicione todos os itens necessários. Para cada equipamento, preencha nome, modelo, marca, quantidade e especificações técnicas." 
+                    text: "Na seção de Equipamentos (se visível), adicione todos os itens necessários. Para cada equipamento, preencha nome, modelo, marca, quantidade e especificações técnicas. Indique se será necessário cabo." 
+                },
+                { 
+                    title: "Campos de Cabo", 
+                    text: "Se selecionar que o equipamento necessita de cabo, campos adicionais serão exibidos para preencher metragem, tipo, número de vias, cor e se é blindado." 
                 },
                 { 
                     title: "Adicionando Mais Equipamentos", 
@@ -821,7 +1200,7 @@ if (!file_exists($upload_dir)) {
                 },
                 { 
                     title: "Mão-de-Obra", 
-                    text: "Na seção de Mão-de-Obra, adicione os serviços necessários. Para cada serviço, especifique os profissionais, período de trabalho e dias necessários." 
+                    text: "Na seção de Mão-de-Obra (se visível), adicione os serviços necessários. Para cada serviço, especifique os profissionais, período de trabalho e dias necessários." 
                 },
                 { 
                     title: "Profissionais", 
@@ -897,6 +1276,24 @@ if (!file_exists($upload_dir)) {
 
             // Iniciar o onboarding
             updateModal();
+        });
+
+        // Efeitos visuais para prioridade
+        document.getElementById('prioridade').addEventListener('change', function() {
+            const options = this.options;
+            for (let i = 0; i < options.length; i++) {
+                options[i].classList.remove('priority-normal', 'priority-medium', 'priority-high', 'priority-urgent');
+            }
+            
+            if (this.value === 'Normal') {
+                this.classList.add('priority-normal');
+            } else if (this.value === 'Média') {
+                this.classList.add('priority-medium');
+            } else if (this.value === 'Alta') {
+                this.classList.add('priority-high');
+            } else if (this.value === 'Urgente') {
+                this.classList.add('priority-urgent');
+            }
         });
     </script>
 </body>
