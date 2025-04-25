@@ -253,11 +253,11 @@ Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ---
 
-## 📞 Suporte
+## 📞 Suporte ou Contratações
 
 **Allvz Startup**  
 📱 WhatsApp: [+55 11 98793-5241](https://wa.me/5511987935241)  
-📧 E-mail: suporte@allvzstartup.com
+📧 E-mail: contato@allvz.com.br
 
 ---
 
