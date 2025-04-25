@@ -43,7 +43,7 @@ if (!isset($_SESSION['logado'])) {
             <link rel="icon" type="image/png" href="https://res.cloudinary.com/djldhndm4/image/upload/v1744049851/a_c-favicon_ojozlk.png" />
 
             <!-- Thumbnail para compartilhamento -->
-            <meta property="og:image" content="https://res.cloudinary.com/djldhndm4/image/upload/v1744049790/thumb-ac-allvz_lt8vhh.jpg" />
+            <meta property="og:image" content="https://res.cloudinary.com/djldhndm4/image/upload/v1745605986/iD_xjpsht.png" />
             <meta property="og:image:type" content="image/jpeg" />
             <meta property="og:image:width" content="1200" />
             <meta property="og:image:height" content="630" />
@@ -60,7 +60,7 @@ if (!isset($_SESSION['logado'])) {
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:title" content="Assistente Comercial - Solicitação de Propostas Padronizada" />
             <meta name="twitter:description" content="Sistema interno da DMSYS para padronizar, agilizar e organizar o envio de propostas comerciais. Reduza retrabalho, ganhe tempo e garanta clareza nas solicitações entre equipes." />
-            <meta name="twitter:image" content="https://res.cloudinary.com/djldhndm4/image/upload/v1744049790/thumb-ac-allvz_lt8vhh.jpg" />
+            <meta name="twitter:image" content="https://res.cloudinary.com/djldhndm4/image/upload/v1745605986/iD_xjpsht.png" />
 
             <!-- Autor, Designer e Direitos -->
             <meta name="author" content="Allvz Startup" />
