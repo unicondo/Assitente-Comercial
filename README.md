@@ -1,207 +1,202 @@
-
 # 🚀 Assistente Comercial - Sistema de Solicitação de Propostas
 
 ## 📌 Visão Geral
 
-O **Assistente Comercial** é uma aplicação web completa que **padroniza, organiza e automatiza** o processo de solicitação de propostas técnicas e comerciais. Desenvolvido para empresas que lidam com integrações de equipamentos, serviços e documentação técnica, o sistema centraliza todas as etapas da solicitação, garantindo **eficiência, clareza e segurança**.
+O **Assistente Comercial** é uma aplicação web robusta que **padroniza, organiza e automatiza** o processo de solicitação de propostas técnicas e comerciais. Desenvolvido para empresas que gerenciam integrações de equipamentos, serviços e documentação técnica, o sistema centraliza todas as etapas, promovendo **eficiência, clareza e segurança**. Ideal para equipes técnicas e comerciais que buscam reduzir retrabalho e melhorar a comunicação.
 
 ---
 
 ## ✨ Funcionalidades Principais
 
 ### 🔐 Autenticação Segura
-- Login com hash `bcrypt`
-- Bloqueio automático após 35 tentativas incorretas (delay de 2 segundos)
+- Login com hash `bcrypt` (senha: "unicondo")
+- Bloqueio após 35 tentativas incorretas com delay de 2 segundos
 - Sessão com timeout de 30 minutos
+- Proteção contra inspeção de código (F12, clique direito)
 
 ### 💾 Salvamento Automático
-- Armazena dados localmente com `localStorage`
-- Evita perda de informações por fechamento/acidente
-- Dados são apagados automaticamente após envio
+- Dados armazenados localmente via `localStorage`
+- Previne perda de informações por fechamento acidental
+- Limpeza automática dos dados após envio
 
-### 🧾 Protocolo Único por Solicitação
-- Cada proposta gera um código de protocolo exclusivo
-- Inserido no e-mail e na confirmação
-- Facilita rastreabilidade de solicitações
+### 🧾 Protocolo Único
+- Geração automática de protocolo (ex.: `DMSYS25042025-103900-XYZ`)
+- Incluído no e-mail e na confirmação
+- Facilita rastreamento de solicitações
 
 ### 🖥️ Interface Responsiva e Intuitiva
-- Layout moderno, escuro e adaptado para dispositivos móveis
-- Navegação por **etapas (tabs)**
-- Validação em tempo real dos campos obrigatórios
-- Barra de progresso no topo com animação
+- Tema escuro moderno, otimizado para mobile e desktop
+- Navegação por abas com barra de progresso animada
+- Validação em tempo real de campos obrigatórios
+- Modal de onboarding com tutorial interativo (DotLottie)
+- Modal de confirmação com resumo visual interativo
 
 ### 📑 Formulário Completo
-- Seção de Informações Básicas:
-  - Setor (Contrato/Implantação), Cliente, Solicitante
-  - Prioridade com destaque visual
-  - Tipo de proposta (Produto, Serviço, Completa)
-  - Opção de notificação por e-mail
-  - Aditivo Contratual
 
-- Seção de Equipamentos:
-  - Adição de múltiplos itens com nome, modelo, marca, quantidade
-  - Detalhes técnicos: tipo e metragem de cabos, cor, vias, blindagem
+#### Informações Básicas
+- **Campos**: Setor (Contrato/Implantação), Cliente, Solicitante (obrigatórios)
+- Prioridade com destaque visual (Normal, Média, Alta, Urgente)
+- Tipo de proposta: Produto, Serviço, Completa
+- Opções: Notificação por e-mail, Aditivo Contratual
+- E-mail de notificação com protocolo único
 
-- Seção de Mão de Obra:
-  - Vários serviços por proposta
-  - Tipo de profissional, período (diurno/noturno), tipo de dia, dias necessários
+#### Escopo do Projeto
+- Editor de texto rico com **Summernote** (formatação, listas, tabelas)
+- Campo obrigatório para descrição detalhada do projeto
+- Suporte a objetivos, requisitos e entregas esperadas
 
-- Upload de relatório técnico (obrigatório)
+#### Equipamentos
+- Adição dinâmica de múltiplos itens
+- **Campos**: Nome, Modelo, Marca, Quantidade, Especificações (obrigatórios)
+- Opção de cabo com detalhes: metragem, tipo, vias, cor, blindagem
+
+#### Mão de Obra
+- Múltiplos serviços por proposta
+- **Campos por serviço**: Descrição, Período (Diurno/Noturno), Dia (Útil/Fim de semana), Total de dias
+- Profissionais dinâmicos por serviço: tipo (ex.: Técnico de Automação), quantidade
+- Adição/remoção em tempo real
+
+#### Upload
+- Relatório técnico obrigatório (PDF, DOCX)
+- Validação com feedback visual
+- Instruções para imagens claras e de alta qualidade
 
 ### 📤 Envio Inteligente
-- Geração de **resumo visual interativo**
-- Upload de arquivo com validação
-- Geração de e-mail com corpo estruturado + protocolo
-- Confirmação visual de envio
+- Geração de resumo visual em tabela com contraste otimizado
+- Upload de arquivo via AJAX com feedback de spinner
+- E-mail estruturado com protocolo e anexo
+- Confirmação visual de envio com recarregamento automático
 
 ### 🛡️ Proteção Contra Uso Indevido
-- Inputs sanitizados
-- Desativação de clique direito, F12 e inspeção de código
+- Sanitização de inputs
+- Bloqueio de clique direito, F12 e atalhos de inspeção
 - Proteção de sessão e diretório de uploads
+- Validação rigorosa de campos obrigatórios
 
 ---
 
-## 🆕 Novidades da Versão 2.0.0
+## 🆕 Novidades da Versão 2.1.0
 
-- Geração automática de protocolo
-- Salvamento automático com LocalStorage
-- Validação mais inteligente de campos
-- Interface com navegação por abas
-- Confirmação visual melhorada com resumo interativo
-- Melhor compatibilidade mobile
-- Proteção contra ferramentas de desenvolvedor
-- Design visual mais limpo e moderno
+- 📝 **Editor de Escopo com Summernote**: Novo campo de texto rico para descrever o escopo do projeto com formatação avançada (negrito, listas, tabelas).
+- 🎨 **Melhorias na Interface**:
+  - Modal de confirmação com fundo escuro, texto branco e tabelas de alto contraste.
+  - Estilização otimizada para botões (transições suaves com `color-mix`).
+  - Campo de e-mail e protocolo exibidos lado a lado (responsivo).
+- 🛠️ **Otimização de Validação**:
+  - Validação mais rigorosa para equipamentos e serviços.
+  - Feedback claro para campos obrigatórios, incluindo escopo.
+- 🔄 **Melhorias no Fluxo**:
+  - Integração do escopo do projeto no resumo e e-mail.
+  - Recarregamento automático do formulário após envio.
+- 📱 **Compatibilidade Mobile**:
+  - Ajustes no layout para telas menores (ex.: campos de período/dia em coluna).
+  - Melhor responsividade no modal de onboarding.
+- 🛡️ **Segurança Aprimorada**:
+  - Validação adicional no upload de arquivos via AJAX.
+  - Proteção reforçada contra tentativas de login maliciosas.
+- 🌐 **SEO e Compartilhamento**:
+  - Adição de Open Graph e Twitter Card para melhor compartilhamento.
+  - Metadados otimizados (favicon, autor, direitos).
 
 ---
 
-# 🔍 Análise do Código PHP/HTML/JavaScript
+## 🛠️ Instalação
 
-## 1. Configurações Iniciais (PHP)
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/unicondo/Assitente-Comercial.git
+   ```
+2. Configure um servidor com PHP 7.4+ e extensões (`openssl`, `fileinfo`, `bcrypt`, `mbstring`).
+3. Crie a pasta `Uploads/` na raiz do projeto com permissões de escrita:
+   ```bash
+   mkdir Uploads && chmod 775 Uploads
+   ```
+4. Configure o servidor de e-mail no arquivo `enviar_email.php`.
+5. Acesse a aplicação via navegador (HTTPS recomendado).
 
+---
+
+## 🔍 Análise do Código
+
+### 1. Configurações Iniciais (PHP)
 ```php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 ini_set('memory_limit', '256M');
 session_start();
 ```
+- Ativa exibição de erros para depuração
+- Define limite de memória (256M)
+- Inicia sessão para autenticação
 
-- Ativa exibição de erros
-- Define limite de memória
-- Inicia sessão para controle de autenticação
+### 2. Autenticação
+- Hash `bcrypt` para senha segura ("Dmsys-1290")
+- Bloqueio após 35 tentativas com delay
+- Timeout de sessão (30 minutos)
 
----
-
-## 2. Autenticação por Senha
-
-```php
-$senha_correta = '$2y$10$fCacVbnAk6m7zsQJ0dKPt.xlgYAba5g8ZsBVOi4uJvLIT0Vgi.0TW';
-```
-
-- Verifica senha contra hash ("unicondo")
-- Bloqueia login após 35 tentativas (delay de 2s)
-
----
-
-## 3. Página de Login
-
+### 3. Página de Login
 - Animação Lottie com saudação dinâmica (bom dia/tarde/noite)
-- Campo de senha com botão mostrar/ocultar
-- Proteção contra inspeção e cópia (F12, clique direito bloqueados)
+- Campo de senha com toggle (mostrar/ocultar)
+- Proteção contra F12, clique direito e atalhos
+- Metadados Open Graph e Twitter Card para SEO
 
----
-
-## 4. Controle de Sessão
-
-- Sessão expira após 30 minutos
-- Redireciona automaticamente ao login
-
----
-
-## 5. Página Principal (Após Login)
-
-### Layout
+### 4. Página Principal
+#### Layout
+- Tema escuro com Bootstrap 5
 - Barra de progresso no scroll
 - Spinner de carregamento
-- Modal de confirmação de envio
-- Modal de tutorial onboarding (DotLottie)
+- Modais: confirmação (resumo) e onboarding (tutorial)
 
-### Seções do Formulário
+#### Formulário
+- **Informações Básicas**: Setor, Cliente, Solicitante, Prioridade, Tipo de Proposta
+- **Escopo do Projeto**: Editor Summernote com formatação rica
+- **Equipamentos**: Blocos dinâmicos com campos de cabo condicionais
+- **Mão de Obra**: Serviços com profissionais dinâmicos
+- **Upload**: Relatório técnico com validação
 
-#### Informações Básicas
-- Campos obrigatórios: Setor, Cliente, Solicitante
-- Prioridade visual (com cores: verde, amarelo, vermelho, roxo)
-- Tipo de proposta e opções extras (email/aditivo)
+### 5. JavaScript
+#### Fluxo Lógico
+- `atualizarVisibilidadeSecoes()`: Mostra/oculta seções por tipo de proposta
+- `gerarProtocolo()`: Cria código único (data/hora + letras aleatórias)
+- `gerarResumoProposta()`: Compila dados em HTML para modal e e-mail
+- `enviarSolicitacao()`: Valida e inicia envio
+- `enviarArquivoParaServidor()`: Upload via AJAX
+- `enviarEmail()`: Envia e-mail com anexo
 
-#### Equipamentos
-- Blocos dinâmicos com botão adicionar/remover
-- Campos para cabos (ativados conforme tipo selecionado)
+#### Interatividade
+- Funções para adicionar/remover: `adicionarEquipamento()`, `adicionarServico()`, `adicionarProfissional()`
+- Validação em tempo real
+- Onboarding interativo com progresso
 
-#### Mão de Obra
-- Blocos de serviço com múltiplos profissionais
-- Campos dinâmicos: tipo, período, dias
-- Adição e remoção em tempo real
+### 6. Estilo CSS
+- Tema escuro com `color-mix` para botões
+- Tabelas de alto contraste no resumo
+- Responsividade para mobile
+- Animações (ex.: prioridade urgente com `pulse`)
 
-#### Upload
-- Arquivo obrigatório (PDF, DOCX)
-- Upload com feedback visual
-
----
-
-## 6. Funcionalidades JavaScript
-
-### 🔁 Fluxo Lógico
-- `atualizarVisibilidadeSecoes()` – mostra/oculta seções por tipo de proposta
-- `gerarProtocolo()` – cria código único com base na data/hora
-- `gerarResumoProposta()` – compila os dados em HTML para envio
-- `enviarSolicitacao()` e `enviarEmail()` – processam envio final
-- `enviarArquivoParaServidor()` – upload via AJAX para PHP
-
-### 🧩 Interatividade
-- `adicionarEquipamento()` / `removerEquipamento()` – gestão de equipamentos
-- `adicionarServico()` / `removerServico()` – gestão de serviços
-- `adicionarProfissional()` / `removerProfissional()` – por serviço
-
-### 📦 UI/UX
-- Validação de campos obrigatórios
-- Modais interativos (tutorial, confirmação)
-- Scroll progressivo com barra visual
-- Efeitos visuais em prioridades e botões
-
----
-
-## 7. Estilo CSS
-
-- Tema escuro elegante
-- Destaques por prioridade (verde, amarelo, vermelho, roxo)
-- Responsivo para mobile e desktop
-- Modais e tabelas estilizadas
-- Feedback visual para botões e hover
-
----
-
-## 8. Backend (Implícito)
-
-- `upload.php`: recebe relatório técnico
-- `enviar_email.php`: gera e envia e-mail com dados da proposta + anexo
+### 7. Backend
+- `upload.php`: Processa upload de relatórios
+- `enviar_email.php`: Envia e-mail com dados e anexo
 
 ---
 
 ## 🚦 Fluxo Completo
 
-1. Usuário acessa e faz login
-2. Preenche dados básicos
-3. Adiciona equipamentos e serviços
+1. Usuário faz login com senha
+2. Preenche informações básicas e escopo do projeto
+3. Adiciona equipamentos e/ou serviços
 4. Anexa relatório técnico
-5. Visualiza resumo e confirma envio
-6. Sistema gera protocolo e envia e-mail
-7. Dados são apagados do LocalStorage
+5. Visualiza resumo em modal interativo
+6. Confirma envio, gerando protocolo e e-mail
+7. Formulário é reiniciado
 
 ---
 
 ## 🧰 Tecnologias Utilizadas
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+), Bootstrap 5, DotLottie
-- **Backend**: PHP 7.4+, Sessões, Uploads, `bcrypt`, envio de e-mail
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+), Bootstrap 5, Summernote, DotLottie
+- **Backend**: PHP 7.4+, Sessões, Uploads, `bcrypt`, Envio de e-mail
+- **Bibliotecas**: jQuery, Bootstrap JS, Summernote JS
 
 ---
 
@@ -209,25 +204,60 @@ $senha_correta = '$2y$10$fCacVbnAk6m7zsQJ0dKPt.xlgYAba5g8ZsBVOi4uJvLIT0Vgi.0TW';
 
 - Servidor com PHP 7.4+
 - Extensões: `openssl`, `fileinfo`, `bcrypt`, `mbstring`
-- Pasta `uploads/` com permissão de escrita
+- Pasta `Uploads/` com permissão 775
+- Servidor SMTP configurado
 - HTTPS recomendado
 
 ---
 
 ## 📈 Benefícios
 
-- Processo padronizado e centralizado
-- Economia de tempo e retrabalho
-- Controle por protocolo
-- Melhor comunicação entre áreas técnicas e comerciais
-- Interface clara e segura
+- **Padronização**: Processo centralizado e estruturado
+- **Eficiência**: Redução de retrabalho e tempo
+- **Rastreabilidade**: Controle por protocolo único
+- **Comunicação**: Integração clara entre áreas
+- **Segurança**: Proteção de dados e acesso
+
+---
+
+## ⚠️ Limitações
+
+- O envio de e-mails depende de um servidor SMTP configurado.
+- Proteções contra F12/clique direito podem ser contornadas por usuários avançados.
+- O uso de `localStorage` limita o armazenamento para formulários extensos.
+
+---
+
+## 🤝 Contribuição
+
+1. Faça um fork do projeto.
+2. Crie uma branch para sua feature:
+   ```bash
+   git checkout -b feature/nova-funcionalidade
+   ```
+3. Commit suas alterações:
+   ```bash
+   git commit -m 'Adiciona nova funcionalidade'
+   ```
+4. Envie para o repositório remoto:
+   ```bash
+   git push origin feature/nova-funcionalidade
+   ```
+5. Abra um Pull Request.
+
+---
+
+## 📜 Licença
+
+Este projeto está licenciado sob a [MIT License](LICENSE).
 
 ---
 
 ## 📞 Suporte
 
 **Allvz Startup**  
-📱 WhatsApp: [+55 11 98793-5241](https://wa.me/5511987935241)
+📱 WhatsApp: [+55 11 98793-5241](https://wa.me/5511987935241)  
+📧 E-mail: suporte@allvzstartup.com
 
 ---
 
