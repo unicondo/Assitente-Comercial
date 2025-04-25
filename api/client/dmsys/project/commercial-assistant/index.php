@@ -95,6 +95,7 @@ if (!isset($_SESSION['logado'])) {
                     <button type="submit" class="btn btn-primary">Acessar</button>
                 </form>
             </div>
+
             <script>
                 const horaAtual = new Date().getHours();
                 const elemento = document.getElementById('saudacao');
@@ -151,7 +152,7 @@ if (isset($_SESSION['ultima_atividade']) && (time() - $_SESSION['ultima_atividad
 $_SESSION['ultima_atividade'] = time();
 
 // Configurações do upload
-$upload_dir = 'uploads/';
+$upload_dir = 'Uploads/';
 if (!file_exists($upload_dir)) {
     if (!mkdir($upload_dir, 0755, true)) {
         die("Falha ao criar diretório de uploads");
@@ -185,6 +186,12 @@ if (!file_exists($upload_dir)) {
             border: none;
             transition: all 0.3s ease;
         }
+        .note-editor.note-airframe .note-editing-area .note-editable, .note-editor.note-frame .note-editing-area .note-editable {
+    padding: 10px;
+    overflow: auto;
+    word-wrap: break-word;
+    color: #fff !important;
+}
         .btn-info:hover {
             background-color: color-mix(in oklab, #fb6464 50%, transparent);
             color: #fff;
@@ -216,6 +223,9 @@ if (!file_exists($upload_dir)) {
             background: #333;
             z-index: 1000;
         }
+        .modal-confirmacao {
+    color: #fff !important;
+}
         .progress-bar {
             height: 5px;
             width: 0;
@@ -374,6 +384,8 @@ if (!file_exists($upload_dir)) {
             }
         }
     </style>
+    <!-- Incluindo Summernote CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="progress-container">
@@ -463,6 +475,18 @@ if (!file_exists($upload_dir)) {
             </div>
         </div>
 
+        <!-- Escopo do Projeto com Summernote -->
+        <div class="card mb-3">
+            <h3>Escopo do Projeto (Obrigatório)</h3>
+            <div class="row">
+                <div class="col-md-12">
+                    <textarea id="escopo-projeto" class="form-control summernote" rows="6" 
+                              placeholder="Descreva detalhadamente o escopo do projeto, incluindo objetivos, requisitos, entregas esperadas e qualquer outra informação relevante." 
+                              required></textarea>
+                </div>
+            </div>
+        </div> 
+        
         <div class="card mb-3" id="equipamentos">
             <h3>Equipamentos</h3>
             <div class="equipamento-container">
@@ -494,7 +518,7 @@ if (!file_exists($upload_dir)) {
                             <option value="Sim">Sim</option>
                         </select>
                     </div>
-                    <div class="campos-cabo" style="display: none;">
+                    <div class="campos-cabo row" style="display: none;">
                         <div class="col-md-6">
                             <label class="form-label" data-bs-toggle="tooltip" title="Se for cabo, informe a metragem">Metragem do Cabo:</label>
                             <input type="number" class="form-control metragem" placeholder="Metros">
@@ -513,7 +537,8 @@ if (!file_exists($upload_dir)) {
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" data-bs-toggle="tooltip" title="Blindado?">Blindado?</label>
-                            <select class="form-select blindado">
+                            <select class="form-select blindado" required>
+                                <option value="">Selecione</option>
                                 <option value="Sim">Sim</option>
                                 <option value="Não">Não</option>
                             </select>
@@ -629,7 +654,7 @@ if (!file_exists($upload_dir)) {
 
     <div id="modalConfirmacao" class="modal-confirmacao">
         <div class="modal-content">
-            <h3 class="text-center mb-4">Confirmação de Proposta</h3>
+            <h3 class="text-center mb-4" style="color: #fff;">Confirmação de Proposta</h3>
             <div id="resumoProposta"></div>
             <div class="d-flex justify-content-between mt-4">
                 <button class="btn btn-secondary" onclick="fecharModal()">Voltar e Editar</button>
@@ -655,7 +680,29 @@ if (!file_exists($upload_dir)) {
         </div>
     </div>
 
+    <!-- Incluindo jQuery e Summernote JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+
     <script>
+        // Inicializar Summernote
+        $(document).ready(function() {
+            $('#escopo-projeto').summernote({
+                height: 200,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ],
+                placeholder: 'Descreva detalhadamente o escopo do projeto, incluindo objetivos, requisitos, entregas esperadas e qualquer outra informação relevante.'
+            });
+        });
+
         // Variáveis globais
         let relatorioLink = '';
         let relatorioNome = '';
@@ -822,6 +869,7 @@ if (!file_exists($upload_dir)) {
             const aditivoContratual = document.getElementById("aditivo-contratual").checked;
             const relatorio = document.getElementById("relatorio").files[0];
             const protocolo = document.getElementById("protocolo").value || (notificarEmail ? gerarProtocolo() : '');
+            const escopoProjeto = $('#escopo-projeto').summernote('code'); // Captura o conteúdo do Summernote
             
             // Criar estilo CSS para o email (para manter formatação similar)
             const estiloEmail = `
@@ -857,7 +905,7 @@ if (!file_exists($upload_dir)) {
             // Cabeçalho do resumo
             let resumo = `
                 ${estiloEmail}
-                <h3>Resumo da Proposta Comercial</h3>
+                <h3 style="color: #fff;">Resumo da Proposta Comercial</h3>
                 <p><strong>Protocolo:</strong> ${protocolo || 'Não gerado'}</p>
                 <p><strong>Prioridade:</strong> <span class="${prioridade === 'Normal' ? 'priority-normal' : prioridade === 'Média' ? 'priority-medium' : prioridade === 'Alta' ? 'priority-high' : 'priority-urgent'}">${prioridade}</span></p>
                 <p><strong>Tipo de Proposta:</strong> ${tipoProposta}</p>
@@ -868,9 +916,15 @@ if (!file_exists($upload_dir)) {
                 ${notificarEmail ? `<p><strong>E-mail para notificação:</strong> ${emailNotificacao || 'Não informado'}</p>` : ''}
             `;
 
+            // Adicionar Escopo do Projeto
+            resumo += `
+                <h4 style="color: #fff;">Escopo do Projeto</h4>
+                <div>${escopoProjeto || 'Não informado'}</div>
+            `;
+
             // Seção de Equipamentos (se aplicável)
             if (tipoProposta !== 'Somente Serviço') {
-                resumo += `<h4>Equipamentos</h4>`;
+                resumo += `<h4 style="color: #fff;">Equipamentos</h4>`;
                 
                 if (document.querySelectorAll(".equipamento").length > 0) {
                     resumo += `
@@ -921,7 +975,7 @@ if (!file_exists($upload_dir)) {
 
             // Seção de Serviços (se aplicável)
             if (tipoProposta !== 'Somente Produto') {
-                resumo += `<h4>Serviços</h4>`;
+                resumo += `<h4 style="color: #fff;">Serviços</h4>`;
                 
                 if (document.querySelectorAll(".servico-container").length > 0) {
                     resumo += `
@@ -970,7 +1024,7 @@ if (!file_exists($upload_dir)) {
             }
 
             // Informações do relatório técnico
-            resumo += `<h4>Documentação</h4>`;
+            resumo += `<h4 style="color: #fff;">Documentação</h4>`;
             resumo += `<p><strong>Relatório Técnico:</strong> ${relatorio ? relatorio.name : 'Não anexado'}</p>`;
             
             // Rodapé
@@ -1028,9 +1082,10 @@ if (!file_exists($upload_dir)) {
             const solicitante = document.getElementById("solicitante").value;
             const relatorio = document.getElementById("relatorio").files[0];
             const tipoProposta = document.getElementById("tipo-proposta").value;
+            const escopoProjeto = $('#escopo-projeto').summernote('code').trim();
             
-            if (!cliente || !solicitante || !relatorio) {
-                alert("Por favor, preencha todos os campos obrigatórios!");
+            if (!cliente || !solicitante || !relatorio || !escopoProjeto) {
+                alert("Por favor, preencha todos os campos obrigatórios, incluindo o Escopo do Projeto!");
                 return;
             }
 
@@ -1101,6 +1156,7 @@ if (!file_exists($upload_dir)) {
             const notificarEmail = document.getElementById("notificar-email").checked;
             const emailNotificacao = document.getElementById("email-notificacao").value;
             const protocolo = document.getElementById("protocolo").value || (notificarEmail ? gerarProtocolo() : '');
+            const escopoProjeto = $('#escopo-projeto').summernote('code');
             
             // Criar o assunto do email
             const assunto = `[${prioridade}] ${aditivoContratual ? 'Aditivo Contratual' : 'Proposta Comercial'} ${protocolo} - ${tipoProposta} para ${cliente}`;
@@ -1118,6 +1174,7 @@ if (!file_exists($upload_dir)) {
             formData.append('aditivo_contratual', aditivoContratual ? 'Sim' : 'Não');
             formData.append('cliente', cliente);
             formData.append('solicitante', solicitante);
+            formData.append('escopo_projeto', escopoProjeto); // Adiciona o escopo ao formData
             
             if (notificarEmail && emailNotificacao) {
                 formData.append('email_notificacao', emailNotificacao);
@@ -1185,6 +1242,10 @@ if (!file_exists($upload_dir)) {
                 { 
                     title: "Aditivo Contratual", 
                     text: "Marque a opção 'Aditivo Contratual' se esta solicitação for para um aditivo de contrato existente." 
+                },
+                { 
+                    title: "Escopo do Projeto", 
+                    text: "Descreva detalhadamente o escopo do projeto, incluindo objetivos, requisitos e entregas esperadas. Este campo é obrigatório." 
                 },
                 { 
                     title: "Equipamentos", 
