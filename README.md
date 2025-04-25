@@ -130,7 +130,7 @@ session_start();
 - Inicia sessão para autenticação
 
 ### 2. Autenticação
-- Hash `bcrypt` para senha segura ("Dmsys-1290")
+- Hash `bcrypt` para senha segura ("unicondo")
 - Bloqueio após 35 tentativas com delay
 - Timeout de sessão (30 minutos)
 
